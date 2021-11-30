@@ -10,12 +10,17 @@ for(let i = 0; i < divisions_y; i++) {
         board[i][j] = 0;
     }
 }
+board[1][2] = 1;
+console.log("board[1] = " + board[1]);
+
 // draw array content
 for(let i = 0; i < divisions_y; i++) {
     let y = i * cell_length_y;
     for(let j = 0; j < divisions_x; j++) {
         let x = j * cell_length_x;
-        ctx.fillRect(x, y, cell_length_x * 0.75, cell_length_y * 0.75);
+        if(board[i][j] != 0) {
+            ctx.fillRect(x, y, cell_length_x * 0.75, cell_length_y * 0.75);
+        }
     }
 }
 // ctx.moveTo(0, 0);
