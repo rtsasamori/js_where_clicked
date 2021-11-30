@@ -7,6 +7,7 @@
     style="border:1px solid #000000;"
     ></canvas>
 
+    <script src="board.js"></script>
     <script src="constants.js"></script>
     <script src="draw_grid.js"></script>
     
@@ -22,8 +23,14 @@
         getCursorPosition(canvas, e)
     })
 
-    
+    fruits = [["AA", "BB", "CC"], ["DD", "EE", "FF"]];
+    console.log("fruits=" + fruits[0]);
+    fruits[0][1]="bb";
+    console.log("fruits=" + fruits[0]);
 
+    for(let x = 0; x < 3; x++) {
+        board[x] = 0;
+    }
 
 
     
