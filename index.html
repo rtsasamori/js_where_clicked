@@ -18,19 +18,23 @@
         const x = event.clientX - rect.left
         const y = event.clientY - rect.top
         console.log("x: " + x + " y: " + y)
+        var sx = Math.floor(x / cell_length_x);
+        var sy = Math.floor(y / cell_length_y);
+        if(sx >= divisions_x) { // prevent clicking on edge causing array index overflow
+            sx = divisions_x -1;
+        }
+        if(sy >= divisions_y) {
+            sy = divisions_y -1;
+        }
+        console.log("sx: " + sx + " sy: " + sy);
+        board[sy][sx] = 1;
+        DrawGrid();
     }
     canvas.addEventListener('mousedown', function(e) {
         getCursorPosition(canvas, e)
     })
 
-    fruits = [["AA", "BB", "CC"], ["DD", "EE", "FF"]];
-    console.log("fruits=" + fruits[0]);
-    fruits[0][1]="bb";
-    console.log("fruits=" + fruits[0]);
 
-    for(let x = 0; x < 3; x++) {
-        board[x] = 0;
-    }
 
 
     

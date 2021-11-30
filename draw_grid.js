@@ -10,9 +10,12 @@ for(let i = 0; i < divisions_y; i++) {
         board[i][j] = 0;
     }
 }
-board[1][2] = 1;
+board[1][2] = 1; // just for debug
 console.log("board[1] = " + board[1]);
 
+DrawGrid();
+
+function DrawGrid() {
 // draw array content
 for(let i = 0; i < divisions_y; i++) {
     let y = i * cell_length_y;
@@ -23,17 +26,18 @@ for(let i = 0; i < divisions_y; i++) {
         }
     }
 }
-// ctx.moveTo(0, 0);
-// ctx.lineTo(200, 100);
 
+// draw vertical grid lines
 for(let i = 0; i < divisions_x; i++) {
     let x = i * cell_length_x;
     ctx.moveTo(x, 0);
     ctx.lineTo(x, outer_box_y);
 }
+// draw horizontal grid lines
 for(let i = 0; i < divisions_y; i++) {
     let y = i * cell_length_y;
     ctx.moveTo(0, y);
     ctx.lineTo(outer_box_x, y);
 }
 ctx.stroke();
+}
