@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h2>index.html 2</h2>
+    <h2>index.html</h2>
 
     <canvas id="canvasID" width="200" height = "100"
     style="border:1px solid #000000;"
     ></canvas>
 
     <script src="constants.js"></script>
+    <script src="board.js"></script>
     <script src="draw_grid.js"></script>
     
     <script >
@@ -17,12 +18,22 @@
         const x = event.clientX - rect.left
         const y = event.clientY - rect.top
         console.log("x: " + x + " y: " + y)
+        var sx = Math.floor(x / cell_length_x);
+        var sy = Math.floor(y / cell_length_y);
+        if(sx >= divisions_x) { // prevent clicking on edge causing array index overflow
+            sx = divisions_x -1;
+        }
+        if(sy >= divisions_y) {
+            sy = divisions_y -1;
+        }
+        console.log("sx: " + sx + " sy: " + sy);
+        board[sy][sx] = 1;
+        DrawGrid();
     }
     canvas.addEventListener('mousedown', function(e) {
         getCursorPosition(canvas, e)
     })
 
-    
 
 
 
